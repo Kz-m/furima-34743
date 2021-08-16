@@ -1,24 +1,66 @@
-# README
+# table design
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column             | Type    | Options     |
+| ------------------ | ------- | ----------- |
+| nickname           | string  | null: false |
+| email              | text    | null: false |
+| password           | text    | null: false |
+| name               | string  | null: false |
+| kana               | string  | null: false |
+| date_of_birth      | integer | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :ships
 
-* Configuration
 
-* Database creation
+## items table
 
-* Database initialization
+| Column      | Type        | Options       |
+| ---------   | ----------- | ------------- |
+| name        | string      | null: false   |
+| description | text        | null: false   |
+| category    | string      | null: false   |
+| status      | string      | null: false   |
+| price       | integer     | null: false   |
+| user        | references  |               |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_one :image
+- has_one :ship
 
-* Deployment instructions
 
-* ...
+## images table
+
+| Column      | Type        | Options       |
+| ---------   | ----------- | ------------- |
+| image       |             | ActiveStorage |
+| item        | references  |               |
+
+### Association
+
+- belongs_to :item
+
+
+## ships table
+
+| Column       | Type        | Options     |
+| ------------ | ----------- | ----------- |
+| fee          | string      | null: false |
+| ship_from    | string      | null: false |
+| days         | string      | null: false |
+| item         | references  |             |
+| user         | references  |             |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+
+
+
