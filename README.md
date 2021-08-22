@@ -6,7 +6,7 @@
 | ------------------ | ------- | ------------------------- |
 | nickname           | string  | null: false               |
 | email              | string  | null: false, unique: true |
-| encrypted_password | text    | null: false               |
+| encrypted_password | string  | null: false               |
 | family_name        | string  | null: false               |
 | given_name         | string  | null: false               |
 | family_name(kana)  | string  | null: false               |
@@ -16,38 +16,36 @@
 ### Association
 
 - has_many :items
-- has_many :ships
 - has_many :purchase_histories
 
 
 ## items table
 
-| Column        | Type        | Options       |
-| ------------- | ----------- | ------------- |
-| name          | string      | null: false   |
-| description   | text        | null: false   |
-| category      | string      | null: false   |
-| status        | string      | null: false   |
-| shipping_fee  | text        | null: false   |
-| ship_from     | string      | null: false   |
-| shipping_days | string      | null: false   |
-| price         | integer     | null: false   |
-| user          | references  |               |
+| Column           | Type        | Options           |
+| ---------------- | ----------- | ----------------- |
+| name             | string      | null: false       |
+| description      | text        | null: false       |
+| category_id      | integer     | null: false       |
+| status_id        | integer     | null: false       |
+| shipping_fee_id  | integer     | null: false       |
+| ship_from_id     | integer     | null: false       |
+| shipping_day_id  | integer     | null: false       |
+| price            | integer     | null: false       |
+| user             | references  | foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_one :image
-- has_one :ship
-- has_many :purchases_histories
+- has_many :purchase_histories
 
 
 ## images table
 
-| Column      | Type        | Options       |
-| ---------   | ----------- | ------------- |
-| image       |             | ActiveStorage |
-| item        | references  |               |
+| Column    | Type        | Options           |
+| --------- | ----------- | ----------------- |
+| image     |             | ActiveStorage     |
+| item      | references  | foreign_key: true |
 
 ### Association
 
@@ -56,38 +54,34 @@
 
 ## purchase_histories table
 
-| Column      | Type        | Options       |
-| ----------- | ----------- | ------------- |
-| user        | references  |               |
-| item        | references  |               |
+| Column   | Type        | Options           |
+| -------- | ----------- | ----------------- |
+| user     | references  | foreign_key: true |
+| item     | references  | foreign_key: true |
+| ship     | references  | foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
+- belongs_to :ship
 
 
 ## ships table
 
-| Column              | Type        | Options                                   |
-| ------------------- | ----------- | ----------------------------------------- |
-| zipcode             | integer     | null: false, postal_code, presence: true  |
-| state               | string      | null: false                               |
-| locality            | string      | null: false                               |
-| address             | text        | null: false                               |
-| building_name       | text        |                                           |
-| phone_number        | integer     | null: false, phone_number, presence: true |
-| credit_card_num     | integer     | null: false                               |
-| expiration_date     | integer     | null: false                               |
-| security_code       | integer     | null: false                               |
-| purchase_history_id | references  |                                           |
-| item                | references  |                                           |
-| user                | references  |                                           |
+| Column            | Type        | Options                   |
+| ----------------- | ----------- | ------------------------- |
+| zipcode           | integer     | null: false               |
+| state             | string      | null: false               |
+| locality          | string      | null: false               |
+| address           | text        | null: false               |
+| building_name     | text        |                           |
+| phone_number      | string      | null: false, unique: true |
+| purchase_history  | references  | foreign_key: true         |
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
+- has_one: purchase_history
 
 
 
