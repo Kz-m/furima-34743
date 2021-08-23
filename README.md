@@ -21,30 +21,30 @@
 
 ## items table
 
-| Column           | Type        | Options           |
-| ---------------- | ----------- | ----------------- |
-| name             | string      | null: false       |
-| description      | text        | null: false       |
-| category_id      | integer     | null: false       |
-| status_id        | integer     | null: false       |
-| shipping_fee_id  | integer     | null: false       |
-| state_id         | integer     | null: false       |
-| shipping_day_id  | integer     | null: false       |
-| price            | integer     | null: false       |
-| user             | references  | foreign_key: true |
+| Column           | Type        | Options                        |
+| ---------------- | ----------- | ------------------------------ |
+| name             | string      | null: false                    |
+| description      | text        | null: false                    |
+| category_id      | integer     | null: false                    |
+| status_id        | integer     | null: false                    |
+| shipping_fee_id  | integer     | null: false                    |
+| state_id         | integer     | null: false                    |
+| shipping_day_id  | integer     | null: false                    |
+| price            | integer     | null: false                    |
+| user             | references  | foreign_key: true, null: false |
 
 ### Association
 
 - belongs_to :user
-- has_many :purchase_histories
+- has_one :purchase_history
 
 
 ## purchase_histories table
 
-| Column   | Type        | Options           |
-| -------- | ----------- | ----------------- |
-| user     | references  | foreign_key: true |
-| item     | references  | foreign_key: true |
+| Column   | Type        | Options                        |
+| -------- | ----------- | ------------------------------ |
+| user     | references  | foreign_key: true, null: false |
+| item     | references  | foreign_key: true, null: false |
 
 ### Association
 
@@ -58,7 +58,7 @@
 | Column            | Type        | Options                   |
 | ----------------- | ----------- | ------------------------- |
 | zipcode           | string      | null: false               |
-| state_id          | string      | null: false               |
+| state_id          | integer     | null: false               |
 | locality          | string      | null: false               |
 | address           | string      | null: false               |
 | building_name     | string      |                           |
