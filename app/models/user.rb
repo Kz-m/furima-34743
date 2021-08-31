@@ -12,5 +12,8 @@ class User < ApplicationRecord
     validates :given_name_kana, format: {with: /\A[ァ-ヶー－]+\z/, message: "Namekana kana Full-width katakana characters"}
     validates :date_of_birth 
     validates :encrypted_password, length:{minimum:7}, format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/}
+    validates :email
+    
   end
+  
 end
