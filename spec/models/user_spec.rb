@@ -75,7 +75,7 @@ RSpec.describe User, type: :model do
       it 'email does not include @' do
         @user.email = "abcd.com"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid. Input @ character")
+        expect(@user.errors.full_messages).to include("Email is invalid")
       end
       it 'family_name must be full-width characters' do
         @user.family_name = "halfwidth"
