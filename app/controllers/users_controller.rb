@@ -7,14 +7,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:id])#(user_paramas) TODO// later
+    @user = User.find(params[:id])
     if @user.save
       redirect_to action: :index
     else
-      render :new
+      render :new #top page
     end
   end
 
-  #private
 
 end
