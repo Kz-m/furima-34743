@@ -3,8 +3,8 @@ class CreateItems < ActiveRecord::Migration[6.0]
     create_table :items do |t|
       t.string      :name,                null: false
       t.text        :description,         null: false
-      t.integer     :category_id,         null: false
-      #t.string      :kind,                null: false
+      t.integer     :category_id,         null: false 
+      #t.string      :kind,                null: false //associateしたモデルlikeなAcctiveHashのカラムはここに書かかない。schema.rb確認！
       t.integer     :status_id,           null: false
       t.integer     :prefecture_id,       null: false
       t.integer     :shipping_fee_id,     null: false
