@@ -25,13 +25,12 @@
 | ---------------- | ----------- | ------------------------------ |
 | name             | string      | null: false                    |
 | description      | text        | null: false                    |
+| price            | integer     | null: false                    |
 | category_id      | integer     | null: false                    |
-| kind             | string      | null: false                    |
 | status_id        | integer     | null: false                    |
 | shipping_fee_id  | integer     | null: false                    |
-| prefecture_id    | integer     | null: false                    |
 | shipping_day_id  | integer     | null: false                    |
-| price            | integer     | null: false                    |
+| prefecture_id    | integer     | null: false                    |
 | user             | references  | foreign_key: true, null: false |
 
 ### Association
@@ -39,6 +38,10 @@
 - belongs_to :user
 - has_one :purchase_history
 - belongs_to :category
+- belongs_to :status
+- belongs_to :shipping_fee
+- belongs_to :shipping_day
+- belongs_to :prefecture
 
 
 ## purchase_histories table
