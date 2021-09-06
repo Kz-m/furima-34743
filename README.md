@@ -26,9 +26,10 @@
 | name             | string      | null: false                    |
 | description      | text        | null: false                    |
 | category_id      | integer     | null: false                    |
+| kind             | string      | null: false                    |
 | status_id        | integer     | null: false                    |
 | shipping_fee_id  | integer     | null: false                    |
-| state_id         | integer     | null: false                    |
+| prefecture_id    | integer     | null: false                    |
 | shipping_day_id  | integer     | null: false                    |
 | price            | integer     | null: false                    |
 | user             | references  | foreign_key: true, null: false |
@@ -37,6 +38,7 @@
 
 - belongs_to :user
 - has_one :purchase_history
+- belongs_to :category
 
 
 ## purchase_histories table

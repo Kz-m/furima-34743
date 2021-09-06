@@ -1,12 +1,13 @@
 class ItemsController < ApplicationController
   
-  def show
+  def index
+    @item = Item.order("created_at DESC")
   end 
 
   private
 
-  def item_params
-    params.require(:item).permit(:image).merge(user_id: current_user.id) #TODO// lemme check item_params
-  end
+  #def item_params
+  #  params.require(:item).permit(:image).merge(user_id: current_user.id) #TODO// lemme check item_params
+  #end
 
 end
