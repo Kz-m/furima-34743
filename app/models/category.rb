@@ -1,7 +1,7 @@
 class Category < ActiveHash::Base
   self.data = [   
-    {id: 0, kind: '--'}
-    {id: 1, kind: 'レディース'}, #{カラム名id: integer,カラム名kind: string}  }
+    {id: 0, kind: '--'},
+    {id: 1, kind: 'レディース'}, #{カラム名id: integer,カラム名kind: string}  
     {id: 2, kind: 'メンズ'},
     {id: 3, kind: 'ベビー・キッズ'},
     {id: 4, kind: 'インテリア・住まい・小物'},
