@@ -18,3 +18,4 @@ class User < ApplicationRecord
     validates :given_name_kana 
   end
 end
+
