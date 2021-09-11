@@ -80,7 +80,6 @@
   </div>
   <%# /画面中央の「会員数日本一位」帯部分 %>
 
-  <%# FURIMAの特徴 %>
   <div class='feature-contents'>
     <h2 class='title'>
       FURIMAの特徴
@@ -115,22 +114,17 @@
       </li>
     </ul>
   </div>
-  <%# /FURIMAの特徴 %>
 
-  <%# 商品一覧 %>
-  <div class='item-contents'>
+  <div class='item-contents'> <%# 商品一覧 %>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <div class="subtitle" >
       新規投稿商品
     </div>
     <ul class='item-lists'>
-
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-      <% if @items.present? %> <%# TODO // put %>
-      <% @items.each do |item|%> <%# TODO // put %>
+      <% if @items.present? %> 
+      <% @items.each do |item|%> 
       <li class='list'>
-        <%= link_to item_path(item.id) do %> <%# TODO // fill in Link_to ... do %>
-        <%#binding.pry%>
+        <%= link_to item_path(item.id) do %> 
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
@@ -146,10 +140,10 @@
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
-            <%= item.name %> <%# TODO // fill in %>
+            <%= item.name %>
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br><%= item.shipping_fee_id %></span> <%# TODO // fill in %>
+            <span><%= item.price %>円<br><%= item.shipping_fee_id %></span> 
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -159,10 +153,7 @@
         <% end %>
       </li>
       <% end %>
-      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
+      
       <% else %>
       <li class='list'>
         <%= link_to '#' do %>
@@ -182,11 +173,8 @@
         <% end %>
       </li>
       <% end %>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
     </ul>
   </div>
-  <%# /商品一覧 %>
 </div>
 <%= link_to(new_item_path, class: 'purchase-btn') do %>
   <span class='purchase-btn-text'>出品する</span>
