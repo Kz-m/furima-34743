@@ -48,7 +48,6 @@ class Prefecture < ActiveHash::Base
     {id: 45, pref: '宮崎'},
     {id: 46, pref: '鹿児島'},
     {id: 47, pref: '沖縄'},
-
   ]
   include ActiveHash::Associations
   has_many :items

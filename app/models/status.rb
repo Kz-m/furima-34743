@@ -6,7 +6,6 @@ class Status < ActiveHash::Base
     {id: 3, condition: '目立った傷や汚れなし'},
     {id: 4, condition: 'やや傷や汚れあり'},
     {id: 5, condition: '傷や汚れあり'},
-
   ]
   include ActiveHash::Associations
   has_many :items
