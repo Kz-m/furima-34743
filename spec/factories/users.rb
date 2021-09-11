@@ -14,5 +14,5 @@ FactoryBot.define do
     given_name_kana        {user.last.katakana}
     date_of_birth          {Faker::Date.backward}
   end  
-
 end
+
