@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :Prefecture
 
   VALID_PRICEL_HALF = /\A[0-9]+\z/
-  validates :category_id, :status_id, :prefecture_id, numericality:{ other_than: 0 , message: "can't be blank"} #"--"の時は保存できない
+  validates :category_id, :status_id, :prefecture_id, :shipping_fee_id, :shipping_day_id, numericality:{ other_than: 0 , message: "can't be blank"} #"--"の時は保存できない
   
   with_options presence: true do
     validates :name

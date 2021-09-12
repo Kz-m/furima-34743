@@ -28,27 +28,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end 
       it 'category_id unregistered' do
-        @item.category_id = "" 
+        @item.category_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end 
       it 'status_id unregistered' do
-        @item.status_id = "" 
+        @item.status_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank")
       end 
       it 'prefecture_id unregistered' do
-        @item.prefecture_id = "" 
+        @item.prefecture_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end 
       it 'shipping_fee_id unregistered' do
-        @item.shipping_fee_id = "" 
+        @item.shipping_fee_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee can't be blank")
       end 
       it 'shipping_day_id unregistered' do
-        @item.shipping_day_id = "" 
+        @item.shipping_day_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping day can't be blank")
       end 
@@ -61,7 +61,7 @@ RSpec.describe Item, type: :model do
 
     context 'unregistration validations for item price' do
       it 'price range between ¥300 to ¥9,999,999' do
-        @item.price = "1" 
+        @item.price = 1 
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is out of setting range.Input between ¥300 to ¥9,999,999")
       end
