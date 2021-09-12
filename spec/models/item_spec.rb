@@ -3,17 +3,10 @@ require 'rails_helper'
 RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
-    @user = FactoryBot.build(:user)
   end
   describe '#item put_up_for_sale' do
     context 'acceptable item registration' do 
       it 'fill out item registration' do
-        expect(@item).to be_valid
-      end
-      it 'is valid with item, user_id' do
-        item = @user.items.build(
-          user_id: 1
-        )
         expect(@item).to be_valid
       end
     end
@@ -67,7 +60,7 @@ RSpec.describe Item, type: :model do
       
     end
 
-    context 'unregistration validations for item price' do
+    context 'unregistration validations for item' do
       it 'price range between ¥300 to ¥9,999,999' do
         @item.price = 1 
         @item.valid?
@@ -83,8 +76,12 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is invalid. Input half-width number")
       end
+      it 'Is valid with item , user' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
+      end
 
     end
   end 
 end
-
