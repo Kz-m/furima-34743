@@ -3,11 +3,11 @@ class Item < ApplicationRecord
   belongs_to :user
 
   extend ActiveHash::Associations::ActiveRecordExtensions #Item:category = 親:子だが、これはActivehash使用のため
-  belongs_to_active_hash :Category
-  belongs_to_active_hash :Status
-  belongs_to_active_hash :ShippingFee
-  belongs_to_active_hash :ShippingDay
-  belongs_to_active_hash :Prefecture
+  belongs_to_active_hash :category
+  belongs_to_active_hash :status
+  belongs_to_active_hash :shipping_fee
+  belongs_to_active_hash :shipping_day
+  belongs_to_active_hash :prefecture
 
   VALID_PRICEL_HALF = /\A[0-9]+\z/
   validates :category_id, :status_id, :prefecture_id, :shipping_fee_id, :shipping_day_id, numericality:{ other_than: 0 , message: "can't be blank"} #"--"の時は保存できない
