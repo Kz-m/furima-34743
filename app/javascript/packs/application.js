@@ -7,6 +7,8 @@ require("@rails/ujs").start()
 //require("turbolinks").start() /*JavaScriptファイルの処理が正常に動作しないことを防ぐため、turbolinksを無効化する*/
 require("@rails/activestorage").start()
 require("channels")
+//require("jquery")
+require("../fee");
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
