@@ -21,7 +21,7 @@ class Item < ApplicationRecord
     validates :image
     validates :shipping_fee_id
     validates :shipping_day_id
-    validates :price, numericality:{ with: VALID_ALPHABET_HALF, message: "is invalid. Input half-width number"} #ここはformat:{with:}を使いたいがnumericality:の方が強いためvalidationが効かない。このためumericality:を使用し以下の3文を同等とする。
+    validates :price, numericality:{ with: VALID_ALPHABET_HALF, message: "is invalid. Input half-width number"} #ここはformat:{with:}を使いたいがnumericality:の方が強いためvalidationが効かない。このためnumericality:を使用し以下の3文を同等とする。
     validates :price, numericality:{ with: VALID_COMPLEX_HALF, message: "is invalid. Input half-width number"}
   end
   validates :price,
