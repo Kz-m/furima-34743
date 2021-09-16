@@ -8,8 +8,11 @@ app/assets/stylesheets/items/new.css %>
 
   <div class="items-sell-main"><%# /商品画像 %>
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model: @item, url: edit_item_path, local: true do |f| %>
-    <% render 'shared/error_messages', model: @item %>
+    <%=# form_with model: @item, url: edit_item_path, local: true do |f| %>
+    <%= form_with local: true do |f| %>
+    <%# render 'shared/error_messages', model: @item %>
+    <% render 'shared/error_messages', model: f.object %>
+
     <div class="img-upload">
       <div class="weight-bold-text">
         商品画像
