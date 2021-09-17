@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
-  #before_action :shop_item, only: [:edit, :update, :show, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :shop_item, only: [:show]
 
   def index 
     #@items = Item.all.order("created_at DESC")
@@ -19,8 +19,8 @@ class ItemsController < ApplicationController
     end
   end
 
-  #def show
-  #end
+  def show
+  end
 
   #def edit
   #end
@@ -30,13 +30,14 @@ class ItemsController < ApplicationController
   #    redirect_to item_path
   #  end
   #end
-
+  
   #def destroy
   #  if current_user.id == @item.user_id
   #    @item.destroy
+  #    redirect_to root_path
+  #  else
+  #    render :index
   #  end
-  # redirect_to root_path
-    
   #end
 
 
@@ -47,8 +48,8 @@ class ItemsController < ApplicationController
                   :price).merge(user_id: current_user.id)
   end
 
-  #def shop_item
-  #  @item = Item.find(params[:id])
-  #end
+  def shop_item
+    @item = Item.find(params[:id])
+  end
 
 end
