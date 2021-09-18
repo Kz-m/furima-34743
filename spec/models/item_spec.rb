@@ -9,6 +9,9 @@ RSpec.describe Item, type: :model do
       it 'fill out item registration' do
         expect(@item).to be_valid
       end
+      it 'an image attached' do
+        expect(@item).to be_valid
+      end
     end
 
     context 'when item unregistration because blank' do
@@ -90,6 +93,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('User must exist')
       end
-    end
+    end 
   end
 end

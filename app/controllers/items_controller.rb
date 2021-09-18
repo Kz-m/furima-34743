@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :shop_item, only: [:show, :destroy, :edit, :update]
+  before_action :shop_item, only: [:show, :edit, :update, :destroy]
   before_action :not_allowed_url, except: [:index, :show]
 
   def index 
@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
 
   def edit
   end
-  #binding.pry
+
   def update
     if @item.update(item_params)
       redirect_to item_path
@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.permit(:image, :name, :description, :category_id, :status_id, :prefecture_id, :shipping_fee_id, :shipping_day_id,
+    params.require(:item).permit(:image, :name, :description, :category_id, :status_id, :prefecture_id, :shipping_fee_id, :shipping_day_id,
                   :price).merge(user_id: current_user.id)
   end
 
