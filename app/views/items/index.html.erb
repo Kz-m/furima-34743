@@ -16,7 +16,6 @@
     </div>
   </div>
 
-  <%# FURIMAが選ばれる3つの理由部分 %>
   <div class='select-reason-contents'>
     <h2 class='title'>
       FURIMAが選ばれる3つの理由
@@ -57,10 +56,8 @@
       </li>
     </ul>
   </div>
-  <%# /FURIMAが選ばれる3つの理由部分 %>
 
-  <%# 画面中央の「会員数日本一位」帯部分 %>
-  <div class='ad-contents'>
+  <div class='ad-contents'> <%# 画面中央の「会員数日本一位」帯部分 %>
     <h2 class='ad-title'>
       会員数日本一位
     </h2>
@@ -78,7 +75,6 @@
       <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
     </div>
   </div>
-  <%# /画面中央の「会員数日本一位」帯部分 %>
 
   <div class='feature-contents'>
     <h2 class='title'>
@@ -115,27 +111,23 @@
     </ul>
   </div>
 
-  <div class='item-contents'> <%# 商品一覧 %>
+  <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <div class="subtitle" >
       新規投稿商品
     </div>
     <ul class='item-lists'>
       <% if @items.present? %>  
-      <% @items.each do |item| %>  
+      <% @items.each do |item| %> 
       <li class='list'>
         <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
-           <%# if item.purchase.present? %>
-
-          <%# 商品が売れていればsold outを表示しましょう %>
+           <%# if item.purchase.present? %> <%# TODO//ready: 商品が売れていればsold outを表示%>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
           <%# end %>
-          <%# //商品が売れていればsold outを表示しましょう %>
-
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
