@@ -1,3 +1,4 @@
+
 <%# cssは商品出品のものを併用しています。
 app/assets/stylesheets/items/new.css %>
 
@@ -6,11 +7,10 @@ app/assets/stylesheets/items/new.css %>
     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
   </header>
 
-  <div class="items-sell-main"><%# /商品画像 %>
+  <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%#= form_with model: @item, url: edit_item_path, local: true do |f| %>
-    <%= form_with local: true do |f| %>
-    <% render 'shared/error_messages', model: @item %>
+    <%= form_with model: @item, local: true do |f| %>
+    <%= render 'shared/error_messages', model: @item %>
 
     <div class="img-upload">
       <div class="weight-bold-text">
@@ -26,11 +26,11 @@ app/assets/stylesheets/items/new.css %>
     </div>
 
     <div class="new-items">
-      <div class="weight-bold-text"><%# 商品名と商品説明 %>
+      <div class="weight-bold-text">
         商品名
         <span class="indispensable">必須</span>
       </div>
-      <%#= f.text_area :name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+      <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
       <div class="items-explain">
         <div class="weight-bold-text">
           商品の説明
@@ -80,7 +80,7 @@ app/assets/stylesheets/items/new.css %>
       </div>
     </div>
 
-    <div class="sell-price"><%# 販売価格 %>
+    <div class="sell-price">
       <div class="weight-bold-text question-text">
         <span>販売価格<br>(¥300〜9,999,999)</span>
         <a class="question" href="#">?</a>
@@ -109,7 +109,7 @@ app/assets/stylesheets/items/new.css %>
       </div>
     </div>
 
-    <div class="caution"><%# 注意書き %>
+    <div class="caution">
       <p class="sentence">
         <a href="#">禁止されている出品、</a>
         <a href="#">行為</a>
@@ -127,9 +127,9 @@ app/assets/stylesheets/items/new.css %>
       </p>
     </div>
 
-    <div class="sell-btn-contents"><%# 下部ボタン %>
-      <%= f.submit "変更する" ,class:"sell-btn" %>
-      <%=link_to 'もどる', "#", class:"back-btn" %>
+    <div class="sell-btn-contents">
+      <%= f.submit "変更する", class:"sell-btn" %>
+      <%= link_to 'もどる', "#", class:"back-btn" %>
     </div>
   </div>
   <% end %>
