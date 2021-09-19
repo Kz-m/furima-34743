@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   has_one_attached :image
   belongs_to :user
+  has_many :purchase_histories
 
   extend ActiveHash::Associations::ActiveRecordExtensions # Item:category = 親:子だが、これはActivehash使用のため
   belongs_to_active_hash :category
