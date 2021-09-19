@@ -5,7 +5,7 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with mdoel: @item, url: items_path, local: true do |f| %>    
+    <%= form_with model: @item, url: items_path, local: true do |f| %>    
     <%= render 'shared/error_messages', model: @item %> <%# model: f.object(f.objectをmodelに渡す)とは、form_withで渡しているrender先のファイル(ここではエラーメッセージ)の"model"の情報を取ってくるメソッド %>
     <div class="img-upload">
       <div class="weight-bold-text">

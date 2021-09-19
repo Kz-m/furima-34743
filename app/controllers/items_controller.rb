@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :shop_item, only: [:show, :edit, :update, :destroy]
-  before_action :not_allowed_url, except: [:index, :show]
+  before_action :not_allowed_url, only: [:edit, :update, :destroy]
 
   def index 
     @items = Item.all.order("created_at DESC")
