@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
     end
   end
   
-  def destroy
+  def destroy #TODO// think: when item will destroy? ex: if @item.destroy , redirect_to root_path
     if current_user.id == @item.user_id
       @item.destroy
       redirect_to root_path
@@ -56,7 +56,7 @@ class ItemsController < ApplicationController
   end
 
   def not_allowed_url
-    if @item.user_id != current_user.id #|| @item.purchase_history !=nil
+    if @item.user_id != current_user.id || @item.purchase_history !=nil
       redirect_to root_path
     end
   end
