@@ -9,29 +9,28 @@ class PurchaseHistoriesController < ApplicationController
 
   def create
     @ship = Ship.new(ship_params)
-    binding.pry
     if @ship.valid?
       @ship.save
-      return redirect_to root_path
+      redirect_to root_path
     else
-      render 'index'
+      render :index
     end
   end
 
   private
 
   def ship_params
-    params.require(:ship).permit(:zipcode, :state_id, :locality, :address, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item.id])
+    params.require(:ship).permit(:zipcode, :state_id, :locality, :address, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 
   def shop_item
     @item = Item.find(params[:item_id]) #item_purchase_historiesのURLがネストにより変化している
   end
 
-  def not_allowed_url
-    if @item.user_id != current_user.id || @item.purchase_history !=nil
-      redirect_to root_path
-    end
-  end
+  #def not_allowed_url
+  #  if @item.user_id != current_user.id || @item.purchase_history !=nil
+  #    redirect_to root_path
+  #  end
+  #end
 end
 
