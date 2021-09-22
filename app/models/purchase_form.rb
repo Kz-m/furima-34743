@@ -1,6 +1,6 @@
 class PurchaseForm
   include ActiveModel::Model
-  attr_accessor :
+  attr_accessor :user_id, :item_id, :zipcode, :state_id, :locality, :address, :building_name, :phone_number 
   #TODO// put validates
   def save
     #TODO// save methods for each tables

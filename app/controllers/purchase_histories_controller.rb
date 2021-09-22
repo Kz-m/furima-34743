@@ -1,16 +1,20 @@
 class PurchaseHistoriesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :shop_item, only: [:index, :create]
-  before_action :def_not_allowed_url, only: [:index, :create]
+  #before_action :not_allowed_url, only: [:index, :create]
 
-  def index
+  def index #allow @item for private method
     @ship = Ship.new #TODO// refactoring?
   end
 
   def create
     @ship = Ship.new(ship_params)
-    if 
+    binding.pry
+    if @ship.valid?
+      @ship.save
+      return redirect_to root_path
     else
+      render 'index'
     end
   end
 
@@ -21,7 +25,7 @@ class PurchaseHistoriesController < ApplicationController
   end
 
   def shop_item
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id]) #item_purchase_historiesのURLがネストにより変化している
   end
 
   def not_allowed_url
@@ -30,6 +34,4 @@ class PurchaseHistoriesController < ApplicationController
     end
   end
 end
-
-#migrateせな!
 
