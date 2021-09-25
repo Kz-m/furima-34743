@@ -113,21 +113,19 @@
 
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
-    <div class="subtitle" >
-      新規投稿商品
-    </div>
+      <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
-      <% if @items.present? %>
+      <% if @items.exists? %>
       <% @items.each do |item| %>
       <li class='list'>
         <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
-           <%# if item.purchase_histories.present? %> <%# TODO//recheck plural: 商品が売れていればsold outを表示%>
+          <% if item.purchase_history.present? %> <%# TODO//recheck plural: 商品が売れていればsold outを表示%>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
-          <%# end %>
+          <% end %>
         </div>
         <div class='item-info'>
           <h3 class='item-name'>

@@ -1,7 +1,7 @@
 class PurchaseHistoriesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :shop_item, only: [:index, :create]
-  #before_action :not_allowed_url, only: [:index, :create]
+  before_action :not_allowed_url, only: [:index, :create]
 
   def index #allow @item for private method
     @purchase_form = PurchaseForm.new
@@ -38,10 +38,10 @@ class PurchaseHistoriesController < ApplicationController
     )
   end
 
-  #def not_allowed_url
-  #  if @item.user_id == current_user.id || @item.purchase_history !=nil
-  #    redirect_to root_path
-  #  end
-  #end
+  def not_allowed_url
+    if @item.user_id == current_user.id || @item.purchase_history != nil
+      redirect_to root_path
+    end
+  end
 end
 
