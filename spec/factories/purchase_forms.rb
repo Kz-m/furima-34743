@@ -9,6 +9,6 @@ FactoryBot.define do
     address                { home.town.kanji }
     building_name          { home.town.hiragana }
     phone_number           { Faker::Number.leading_zero_number(digits: 10, digits:11) }
-    #token                 {}
+    token                  {"tk_test_aaaaaaaa1111111111111111"}
   end
 end

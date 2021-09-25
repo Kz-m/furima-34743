@@ -43,11 +43,11 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include("Phone number can't be blank")
       end
-      #it 'token unregistered' do
-      #  @purchase_form.token = ''
-      #  @purchase_form.valid?
-      #  expect(@purchase_form.errors.full_messages).to include("")
-      #end     
+      it 'token unregistered' do
+        @purchase_form.token = ''
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include("Token can't be blank")
+      end     
     end
 
     context 'unregistration validations for purchase_form' do
