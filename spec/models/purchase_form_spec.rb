@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PurchaseForm, type: :model do
   before do
-    user = FactoryBot.create(:user) #.createはDBのデータを使用する
+    user = FactoryBot.create(:user) # .createはDBのデータを使用する
     item = FactoryBot.create(:item)
     @purchase_form = FactoryBot.build(:purchase_form, user_id: user.id, item_id: item.id)
   end
@@ -23,11 +23,11 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include("Zipcode can't be blank")
       end
-      #it 'prefecture_id unregistered' do
+      # it 'prefecture_id unregistered' do
       #  @purchase_form.prefecture_id = 0
       #  @purchase_form.valid?
       #  expect(@purchase_form.errors.full_messages).to include("Prefecture can't be blank")
-      #end
+      # end
       it 'locality unregistered' do
         @purchase_form.locality = ''
         @purchase_form.valid?
@@ -47,24 +47,24 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.token = ''
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include("Token can't be blank")
-      end     
+      end
     end
 
     context 'unregistration validations for purchase_form' do
       it 'zipcode must include hypen' do
         @purchase_form.zipcode = '1234567'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Zipcode is invalid. Input hyphen")
+        expect(@purchase_form.errors.full_messages).to include('Zipcode is invalid. Input hyphen')
       end
       it 'phone_number maximum length is 11 number' do
         @purchase_form.phone_number = '090123456789'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Phone number is invalid. Input only half-width number at most 11 digits long")
+        expect(@purchase_form.errors.full_messages).to include('Phone number is invalid. Input only half-width number at most 11 digits long')
       end
       it 'phone_number must be half-width number' do
         @purchase_form.phone_number = 'a0901234567'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Phone number is invalid. Input only half-width number at most 11 digits long")
+        expect(@purchase_form.errors.full_messages).to include('Phone number is invalid. Input only half-width number at most 11 digits long')
       end
     end
   end

@@ -22,11 +22,10 @@ class Item < ApplicationRecord
     validates :image
     validates :shipping_fee_id
     validates :shipping_day_id
-    validates :price, numericality:{ with: VALID_ALPHABET_HALF, message: "is invalid. Input half-width number"} #ここはformat:{with:}を使いたいがnumericality:の方が強いためvalidationが効かない。このためnumericality:を使用し以下の3文を同等とする。
-    validates :price, numericality:{ with: VALID_COMPLEX_HALF, message: "is invalid. Input half-width number"}
+    validates :price, numericality: { with: VALID_ALPHABET_HALF, message: 'is invalid. Input half-width number' } # ここはformat:{with:}を使いたいがnumericality:の方が強いためvalidationが効かない。このためnumericality:を使用し以下の3文を同等とする。
+    validates :price, numericality: { with: VALID_COMPLEX_HALF, message: 'is invalid. Input half-width number' }
   end
   validates :price,
-            numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999,
+            numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
                             message: 'is out of setting range.Input between ¥300 to ¥9,999,999' }
 end
-

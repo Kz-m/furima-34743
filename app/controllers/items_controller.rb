@@ -3,8 +3,8 @@ class ItemsController < ApplicationController
   before_action :shop_item, only: [:show, :edit, :update, :destroy]
   before_action :not_allowed_url, only: [:edit, :update, :destroy]
 
-  def index 
-    @items = Item.all.order("created_at DESC")
+  def index
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
@@ -33,8 +33,9 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-  
-  def destroy #TODO// think: when item will destroy? ex: if @item.destroy , redirect_to root_path
+
+  # TODO// think: when item will destroy? ex: if @item.destroy , redirect_to root_path
+  def destroy
     if current_user.id == @item.user_id
       @item.destroy
       redirect_to root_path
@@ -43,12 +44,11 @@ class ItemsController < ApplicationController
     end
   end
 
-
   private
 
   def item_params
     params.require(:item).permit(:image, :name, :description, :category_id, :status_id, :prefecture_id, :shipping_fee_id, :shipping_day_id,
-                  :price).merge(user_id: current_user.id)
+                                 :price).merge(user_id: current_user.id)
   end
 
   def shop_item
@@ -56,8 +56,6 @@ class ItemsController < ApplicationController
   end
 
   def not_allowed_url
-    if @item.user_id != current_user.id || @item.purchase_history !=nil
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.user_id != current_user.id || !@item.purchase_history.nil?
   end
 end
