@@ -61,15 +61,15 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include('Zipcode is invalid. Input hyphen')
       end
-      it 'phone_number maximum length is 11 number' do
-        @purchase_form.phone_number = '090123456789'
-        @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include('Phone number is invalid. Input only half-width number at most 11 digits long')
-      end
       it 'phone_number mimimum length is 9 number' do
         @purchase_form.phone_number = '090123456'
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include('Phone number is too short')
+      end
+      it 'phone_number maximum length is 11 number' do
+        @purchase_form.phone_number = '090123456789'
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include('Phone number is invalid. Input only half-width number at most 11 digits long')
       end
       it 'phone_number must be half-width number' do
         @purchase_form.phone_number = 'aあア09012345'
