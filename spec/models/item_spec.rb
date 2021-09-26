@@ -74,25 +74,25 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price is out of setting range.Input between ¥300 to ¥9,999,999')
       end
       it 'price containing only half-width number' do
-        @item.price = "１０００"
+        @item.price = '１０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Input half-width number")
+        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width number')
       end
       it 'price must be half-width number' do
-        @item.price = "aB12"
+        @item.price = "a\bB12"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Input half-width number")
+        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width number')
       end
       it 'price must be half-width number' do
-        @item.price = "abCD"
+        @item.price = "a\bbCD"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Input half-width number")
+        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width number')
       end
       it 'Is valid with item, user' do
         @item.user = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('User must exist')
       end
-    end 
+    end
   end
 end

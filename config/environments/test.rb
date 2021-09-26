@@ -45,4 +45,7 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
+
+  #MySQL client is not connectedのエラーがでた(FactoryBotに負荷がかかってしまっている様子)ので下記を追記。
+  config.active_job.queue_adapter = :inline
 end
