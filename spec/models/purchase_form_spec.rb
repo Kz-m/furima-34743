@@ -23,11 +23,6 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include("Zipcode can't be blank")
       end
-      # it 'prefecture_id unregistered' do
-      #  @purchase_form.prefecture_id = 0
-      #  @purchase_form.valid?
-      #  expect(@purchase_form.errors.full_messages).to include("Prefecture can't be blank")
-      # end
       it 'locality unregistered' do
         @purchase_form.locality = ''
         @purchase_form.valid?
@@ -48,6 +43,16 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include("Token can't be blank")
       end
+      it 'user_id unregistered' do
+        @purchase_form.user_id = nil
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_id unregistered' do
+        @purchase_form.item_id = nil
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include("Item can't be blank")
+      end
     end
 
     context 'unregistration validations for purchase_form' do
@@ -61,8 +66,13 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include('Phone number is invalid. Input only half-width number at most 11 digits long')
       end
+      it 'phone_number mimimum length is 9 number' do
+        @purchase_form.phone_number = '090123456'
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include('Phone number is too short')
+      end
       it 'phone_number must be half-width number' do
-        @purchase_form.phone_number = 'a0901234567'
+        @purchase_form.phone_number = 'aあア09012345'
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include('Phone number is invalid. Input only half-width number at most 11 digits long')
       end
