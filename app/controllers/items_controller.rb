@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # TODO// think: when item will destroy? ex: if @item.destroy , redirect_to root_path
   def destroy
     if current_user.id == @item.user_id
       @item.destroy
