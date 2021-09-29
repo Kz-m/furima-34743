@@ -74,7 +74,7 @@ RSpec.describe PurchaseForm, type: :model do
       it 'phone_number must be half-width number' do
         @purchase_form.phone_number = 'aあア09012345'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include('Phone number is invalid. Input only half-width number at most 11 digits long')
+        expect(@purchase_form.errors.full_messages).to include('Phone number is invalid. Input only half-wirth number')
       end
     end
   end
