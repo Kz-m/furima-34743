@@ -121,7 +121,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Password is invalid. Input half-width characters include both leters and numbers')
       end
       it 'password includes double-byte characters' do
-        @user.password = '１２３４Ａｑ'
+        @user.password = '１アあＡｑ'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is invalid. Input half-width characters include both leters and numbers')
       end
