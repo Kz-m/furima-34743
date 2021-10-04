@@ -14,7 +14,7 @@ class Item < ApplicationRecord
   VALID_ALPHABET_HALF = / \ A [a-zA-Z] + \ z /
   VALID_COMPLEX_HALF = / \ A [a-zA-Z0-9] + \ z /
 
-  with_options presence: true do
+  with_options presence: true do #ここに書いたものがブラウザ入力でブランクの時エラー文として"plice cant'be blank"のように必ず現れる。つまりdo~endの間には各項目1つだけ。(ここにpriceのvalidationを2つ書いてはまった)
     validates :category_id, :status_id, :prefecture_id, :shipping_fee_id, :shipping_day_id, numericality: { other_than: 0, message: "can't be blank" } # "--"の時は保存できない
     validates :name
     validates :description
@@ -22,7 +22,7 @@ class Item < ApplicationRecord
     validates :shipping_fee_id
     validates :shipping_day_id
     validates :price, numericality: { with: VALID_ALPHABET_HALF, allow_blank: true, message: 'is invalid. Input half-width number' } # ここはformat:{with:}を使いたいがnumericality:の方が強いためvalidationが効かない。このためnumericality:を使用し以下の3文を同等とする。
-  end
+  end                                                                                                                                # presence true do~end の中であっても"allow_blank: true"を書くとmessage内容はvalidationに引っかかる内容の時のみ表示される。(つまりブランクの時は個別messageは表示されない)                 
   validates :price, numericality: { with: VALID_COMPLEX_HALF, allow_blank: true, message: 'is invalid. Input only number' }
   validates :price,
             numericality: { only_integer: true, greater_than_or_equal_to: 300, allow_blank: true, less_than_or_equal_to: 9_999_999,
