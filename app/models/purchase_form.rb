@@ -22,9 +22,10 @@ class PurchaseForm
   with_options allow_blank: true do
     validates :prefecture_id, numericality: { other_than: 0, message: 'is invalid' }
     validates :zipcode, format: { with: VALID_ZIPCODE_NUM, message: 'is invalid. Input hyphen' }
-    validates :phone_number, format: { with: VALID_PHONE_HALF, message: 'is invalid. Input only half-width number at most 11 digits long' }
+    validates :phone_number,
+              format: { with: VALID_PHONE_HALF, message: 'is invalid. Input only half-width number at most 11 digits long' }
     validates :phone_number, format: { with: VALID_PHONE_MISSING, message: 'is too short' }
-    validates :phone_number, format: { with: VALID_NUM_HALF, message: 'is invalid. Input only half-wirth number'}
+    validates :phone_number, format: { with: VALID_NUM_HALF, message: 'is invalid. Input only half-wirth number' }
   end
 
   # 各テーブルに保存する

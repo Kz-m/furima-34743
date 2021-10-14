@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :basic_authentication #basic認証の処理
+  before_action :basic_authentication # basic認証の処理
 
   private
 
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def basic_authentication
     authenticate_or_request_with_http_basic do |username, password|
-      username == ENV["FRMBASIC_AUTHENTICATE_USER"] && password == ENV["FRMBASIC_AUTHENTICATE_PASSWORD"] # vim ~/.zshrcで設定した環境変数userとpassword
+      username == ENV['FRMBASIC_AUTHENTICATE_USER'] && password == ENV['FRMBASIC_AUTHENTICATE_PASSWORD'] # vim ~/.zshrcで設定した環境変数userとpassword
     end
   end
 end

@@ -74,7 +74,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price is out of setting range.Input between ¥300 to ¥9,999,999')
       end
       it 'price must be half-width number' do
-        @item.price = "aAあア１０００"
+        @item.price = 'aAあア１０００'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is invalid. Input half-width number')
       end
